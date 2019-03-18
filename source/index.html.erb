@@ -1,0 +1,21 @@
+---
+title: Hearken colors
+---
+<% require 'pry' %>
+<div id="spectrum">
+<% color_calc.each do |c| %>
+  <div class='<%="person #{c[:name].downcase}"%>' style='<%="background-color:#{c[:hex]}"%>'>
+    <p class="name"><%= c[:name]%></p>
+    <div class="meta">
+      <p class="rgb"><%= "Red: #{c[:r]}, Green: #{c[:g]}, Blue: #{c[:b]}"%></p>
+      <p class="hex"><span class="label">Color hex</span> <%= c[:hex] %></p>
+      <% others = color_calc.map {|x|
+        [x[:name], [(c[:hue] - x[:hue]).abs, 360- (c[:hue] - x[:hue]).abs].min]
+      }.to_h %>
+      <% others.delete(c[:name])%>
+      <p class="complement"><span class="label">Complementary</span> <%= others.select {|k,v| v == others.values.max}.keys.join(', ') %></p>
+      <p class="similar"><span class="label">Similar</span> <%= others.select {|k,v| v == others.values.min}.keys.join(', ') %></p>
+    </div>
+  </div>
+<% end %>
+</div>

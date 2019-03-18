@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title><%= current_page.data.title %></title>
+    <meta property="og:title" content="<%= current_page.data.title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://apps.kavyasukumar.com/hearken-colors/" />
+    <meta property="og:image" content="http://apps.kavyasukumar.com/hearken-colors/images/img.jpg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="335" />
+
+    <%= stylesheet_link_tag "site" %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
